@@ -34,12 +34,12 @@ runs:
       PYPI_TOKEN: ${{ inputs.pypi_token }}
     run: |
       if [[ ${{ steps.choose_repo.outputs.repo }} == fury ]]; then
-        WHEEL=$(ls target/wheels/lancedb-*.whl 2> /dev/null | head -n 1)
+        WHEEL=$(ls target/wheels/lancedbcjk-*.whl 2> /dev/null | head -n 1)
         echo "Uploading $WHEEL to Fury"
         curl -f -F package=@$WHEEL https://$FURY_TOKEN@push.fury.io/lancedb/
       else
         twine upload --repository ${{ steps.choose_repo.outputs.repo }} \
           --username __token__ \
           --password $PYPI_TOKEN \
-          target/wheels/lancedb-*.whl
+          target/wheels/lancedbcjk-*.whl
       fi
