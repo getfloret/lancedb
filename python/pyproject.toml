@@ -1,5 +1,5 @@
 [project]
-name = "lancedb"
+name = "lancedbcjk"
 # version in Cargo.toml
 dynamic = ["version"]
 dependencies = [
