@@ -3,7 +3,8 @@ name: Python
 on:
   push:
     branches:
-      - main
+      - cjk/sync
+      - cjk/release
   pull_request:
     paths:
       - Cargo.toml
@@ -142,37 +143,37 @@ jobs:
       # Make sure wheels are not included in the Rust cache
       - name: Delete wheels
         run: rm -rf target/wheels
-  platform:
-    name: "Mac: ${{ matrix.config.name }}"
-    timeout-minutes: 30
-    strategy:
-      matrix:
-        config:
-          - name: x86
-            runner: macos-15-large
-          - name: Arm
-            runner: macos-14
-    runs-on: "${{ matrix.config.runner }}"
-    defaults:
-      run:
-        shell: bash
-        working-directory: python
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          lfs: true
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - uses: ./.github/workflows/build_mac_wheel
-        with:
-          args: --profile ci
-      - uses: ./.github/workflows/run_tests
-      # Make sure wheels are not included in the Rust cache
-      - name: Delete wheels
-        run: rm -rf target/wheels
+  # platform:
+  #   name: "Mac: ${{ matrix.config.name }}"
+  #   timeout-minutes: 30
+  #   strategy:
+  #     matrix:
+  #       config:
+  #         - name: x86
+  #           runner: macos-15-large
+  #         - name: Arm
+  #           runner: macos-14
+  #   runs-on: "${{ matrix.config.runner }}"
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #       working-directory: python
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #         lfs: true
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: "3.12"
+  #     - uses: ./.github/workflows/build_mac_wheel
+  #       with:
+  #         args: --profile ci
+  #     - uses: ./.github/workflows/run_tests
+  #     # Make sure wheels are not included in the Rust cache
+  #     - name: Delete wheels
+  #       run: rm -rf target/wheels
   windows:
     name: "Windows: ${{ matrix.config.name }}"
     timeout-minutes: 60

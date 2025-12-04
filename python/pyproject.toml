@@ -1,5 +1,5 @@
 [project]
-name = "lancedb"
+name = "lancedbcjk"
 # version in Cargo.toml
 dynamic = ["version"]
 dependencies = [
@@ -13,7 +13,7 @@ dependencies = [
     "lance-namespace>=0.2.1"
 ]
 description = "lancedb"
-authors = [{ name = "LanceDB Devs", email = "dev@lancedb.com" }]
+authors = [{ name = "LanceDB Devs", email = "dev@lancedb.com" }, { name = "Guowei Hsu", email = "tsui@highyouth.com" }]
 license = { file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.9"

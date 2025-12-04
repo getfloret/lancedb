@@ -9,7 +9,7 @@ from datetime import timedelta
 from typing import Dict, Optional, Union, Any
 import warnings
 
-__version__ = importlib.metadata.version("lancedb")
+__version__ = importlib.metadata.version("lancedbcjk")
 
 from ._lancedb import connect as lancedb_connect
 from .common import URI, sanitize_uri
